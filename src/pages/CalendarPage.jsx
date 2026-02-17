@@ -66,14 +66,14 @@ export default function CalendarPage() {
                     <CalendarDays className="w-6 h-6 text-charcoal-900" />
                 </div>
                 <div>
-                    <h1 className="font-heading text-4xl font-bold text-charcoal-100 transform -rotate-1 border-b-4 border-charcoal-900/50 inline-block pb-1">
+                    <h1 className="font-heading text-2xl sm:text-4xl font-bold text-charcoal-100 sm:transform sm:-rotate-1 border-b-4 border-charcoal-900/50 inline-block pb-1">
                         MASTER SCHEDULE
                     </h1>
                 </div>
             </div>
 
             {/* Calendar Container */}
-            <div className="bg-paper border-4 border-charcoal-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 sm:p-6 transform rotate-0.5 relative">
+            <div className="bg-paper border-2 sm:border-4 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-2 sm:p-6 sm:transform sm:rotate-0.5 relative">
                 {/* Texture overlay */}
                 <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none mix-blend-multiply"></div>
 
@@ -91,6 +91,14 @@ export default function CalendarPage() {
                         .fc-day-today { background-color: #fff9c4 !important; }
                         .fc-event { border: 2px solid #1a1a1a !important; border-radius: 0 !important; box-shadow: 2px 2px 0px 0px rgba(0,0,0,1) !important; cursor: pointer !important; }
                         .fc-daygrid-day-number { color: #1a1a1a !important; font-weight: bold !important; font-family: 'Special Elite', monospace !important; }
+                        @media (max-width: 640px) {
+                            .fc-toolbar { flex-direction: column !important; gap: 8px !important; }
+                            .fc-toolbar-title { font-size: 1.1rem !important; }
+                            .fc-button { font-size: 0.7rem !important; padding: 4px 8px !important; }
+                            .fc-col-header-cell { font-size: 0.65rem !important; padding: 4px 0 !important; }
+                            .fc-daygrid-day-number { font-size: 0.75rem !important; }
+                            .fc-event { font-size: 0.65rem !important; padding: 1px 3px !important; }
+                        }
                     `}</style>
                     <FullCalendar
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

@@ -16,18 +16,18 @@ export default function Navbar() {
     ]
 
     return (
-        <nav className="sticky top-0 z-50 bg-paper border-b-4 border-charcoal-900 shadow-xl transform -rotate-1 relative overflow-hidden">
+        <nav className="sticky top-0 z-50 bg-paper border-b-4 border-charcoal-900 shadow-xl sm:transform sm:-rotate-1 relative overflow-hidden">
             {/* Visual texture overlay */}
             <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none mix-blend-multiply"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex items-center justify-between h-20">
+                <div className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 bg-campus-500 border-2 border-charcoal-900 flex items-center justify-center transform hover:rotate-12 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                            <Sparkles className="w-6 h-6 text-charcoal-900" />
+                    <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-campus-500 border-2 border-charcoal-900 flex items-center justify-center transform hover:rotate-12 transition-transform duration-300 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-charcoal-900" />
                         </div>
-                        <span className="font-heading text-2xl font-bold text-charcoal-900 tracking-wider transform rotate-1">
+                        <span className="font-heading text-lg sm:text-2xl font-bold text-charcoal-900 tracking-wider transform rotate-1">
                             CampusConnect
                         </span>
                     </Link>
@@ -39,8 +39,8 @@ export default function Navbar() {
                                 key={to}
                                 to={to}
                                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-bold transition-all duration-300 transform hover:-translate-y-1 ${isActive(to)
-                                        ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                                        : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
+                                    ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                                    : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
                                     }`}
                             >
                                 <Icon className="w-4 h-4" />
@@ -53,8 +53,8 @@ export default function Navbar() {
                                 <Link
                                     to="/admin/dashboard"
                                     className={`flex items-center gap-1.5 px-4 py-2 text-sm font-bold transition-all duration-300 transform hover:-translate-y-1 ${isActive('/admin/dashboard')
-                                            ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                                            : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
+                                        ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                                        : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
                                         }`}
                                 >
                                     <Shield className="w-4 h-4" />
@@ -72,8 +72,8 @@ export default function Navbar() {
                             <Link
                                 to="/admin/login"
                                 className={`flex items-center gap-1.5 px-4 py-2 text-sm font-bold transition-all duration-300 transform hover:-translate-y-1 ${isActive('/admin/login')
-                                        ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                                        : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
+                                    ? 'text-charcoal-900 bg-tape-yellow -rotate-2 border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
+                                    : 'text-charcoal-600 hover:text-charcoal-900 hover:rotate-2'
                                     }`}
                             >
                                 <Shield className="w-4 h-4" />
@@ -101,8 +101,8 @@ export default function Navbar() {
                                     to={to}
                                     onClick={() => setIsOpen(false)}
                                     className={`flex items-center gap-3 px-4 py-3 text-base font-bold transition-all ${isActive(to)
-                                            ? 'bg-tape-yellow border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] -rotate-1'
-                                            : 'text-charcoal-600 hover:bg-charcoal-100'
+                                        ? 'bg-tape-yellow border-2 border-charcoal-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] -rotate-1'
+                                        : 'text-charcoal-600 hover:bg-charcoal-100'
                                         }`}
                                 >
                                     <Icon className="w-5 h-5" />

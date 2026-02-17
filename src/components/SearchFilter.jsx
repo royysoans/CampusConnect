@@ -19,7 +19,7 @@ export default function SearchFilter({
     }
 
     return (
-        <div className="relative bg-paper p-6 border-2 border-charcoal-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
+        <div className="relative bg-paper p-4 sm:p-6 border-2 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:transform sm:rotate-1">
             {/* Texture overlay */}
             <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-30 pointer-events-none mix-blend-multiply"></div>
 
@@ -50,7 +50,7 @@ export default function SearchFilter({
                 </div>
 
                 {/* Filter row */}
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
                     <div className="flex items-center gap-2 text-charcoal-900 font-heading font-bold text-sm bg-tape-yellow px-2 py-1 border-2 border-charcoal-900 -rotate-2 shadow-sm">
                         <SlidersHorizontal className="w-4 h-4" />
                         <span>FILTERS</span>
@@ -61,7 +61,7 @@ export default function SearchFilter({
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="appearance-none px-4 py-2 bg-paper border-2 border-charcoal-900 text-charcoal-900 font-typewriter text-sm focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] pr-8"
+                            className="appearance-none w-full sm:w-auto px-4 py-2 bg-paper border-2 border-charcoal-900 text-charcoal-900 font-typewriter text-sm focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] pr-8"
                         >
                             <option value="all">All Events</option>
                             <option value="upcoming">Upcoming</option>
@@ -78,7 +78,7 @@ export default function SearchFilter({
                         <select
                             value={categoryFilter}
                             onChange={(e) => setCategoryFilter(e.target.value)}
-                            className="appearance-none px-4 py-2 bg-paper border-2 border-charcoal-900 text-charcoal-900 font-typewriter text-sm focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] pr-8"
+                            className="appearance-none w-full sm:w-auto px-4 py-2 bg-paper border-2 border-charcoal-900 text-charcoal-900 font-typewriter text-sm focus:outline-none cursor-pointer hover:bg-gray-50 transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] pr-8"
                         >
                             <option value="">All Categories</option>
                             {ALL_CATEGORIES.map(cat => (

@@ -97,7 +97,7 @@ export default function AdminDashboard() {
                         <LayoutDashboard className="w-6 h-6 text-charcoal-900" />
                     </div>
                     <div>
-                        <h1 className="font-heading text-4xl font-bold text-charcoal-100 transform rotate-1">Admin Dashboard</h1>
+                        <h1 className="font-heading text-2xl sm:text-4xl font-bold text-charcoal-100 sm:transform sm:rotate-1">Admin Dashboard</h1>
                         <p className="font-typewriter text-charcoal-400 text-sm mt-1 bg-charcoal-900 border border-charcoal-700 px-2 inline-block -rotate-1">
                             LOGGED IN AS: {user?.email}
                         </p>
@@ -162,7 +162,7 @@ export default function AdminDashboard() {
                         <span className="font-heading text-charcoal-200 text-sm tracking-wider">EVENT MANIFEST</span>
                     </div>
 
-                    <div className="bg-paper border-4 border-charcoal-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] pt-12 pb-4 px-4 sm:px-8 transform -rotate-0.5 relative">
+                    <div className="bg-paper border-2 sm:border-4 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] pt-12 pb-4 px-3 sm:px-8 sm:transform sm:-rotate-0.5 relative">
                         <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none mix-blend-multiply"></div>
 
                         <div className="divide-y-2 divide-charcoal-900 divide-dashed relative z-10">
@@ -303,8 +303,8 @@ function StatCard({ icon, label, value, type, rotate }) {
 
     return (
         <div
-            className={`${bgColors[type]} p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300 relative`}
-            style={{ transform: `rotate(${rotate}deg)` }}
+            className={`${bgColors[type]} p-4 sm:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300 relative`}
+            style={{ transform: window.innerWidth >= 640 ? `rotate(${rotate}deg)` : 'none' }}
         >
             {/* Pin */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 border-2 border-charcoal-900 shadow-sm z-10"></div>

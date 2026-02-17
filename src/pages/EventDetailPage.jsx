@@ -81,7 +81,7 @@ export default function EventDetailPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     {/* Main Flyer Content */}
                     <div className="lg:col-span-2 relative">
-                        <div className="bg-paper border-2 border-charcoal-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform -rotate-1 p-2 relative">
+                        <div className="bg-paper border-2 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:transform sm:-rotate-1 p-2 relative">
                             {/* Texture overlay */}
                             <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-20 pointer-events-none mix-blend-multiply"></div>
 
@@ -113,7 +113,7 @@ export default function EventDetailPage() {
                                     </span>
                                 </div>
 
-                                <h1 className="font-heading text-4xl sm:text-5xl font-bold text-charcoal-900 mb-6 leading-tight border-b-4 border-charcoal-900 inline-block pb-2">
+                                <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal-900 mb-6 leading-tight border-b-4 border-charcoal-900 inline-block pb-2">
                                     {event.title}
                                 </h1>
 

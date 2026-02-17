@@ -82,7 +82,7 @@ export default function HomePage() {
                             </div>
                         </div>
 
-                        <h1 className="font-heading text-6xl md:text-8xl font-bold text-white leading-tight drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] transform -rotate-1">
+                        <h1 className="font-heading text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-tight drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] transform sm:-rotate-1">
                             DISCOVER
                             <br />
                             <span className="text-campus-500 relative inline-block">
@@ -91,7 +91,7 @@ export default function HomePage() {
                             </span>
                         </h1>
 
-                        <p className="font-typewriter text-charcoal-200 text-lg md:text-xl max-w-2xl mx-auto bg-charcoal-900/50 p-4 border border-charcoal-600 border-dashed transform rotate-1">
+                        <p className="font-typewriter text-charcoal-200 text-base sm:text-lg md:text-xl max-w-2xl mx-auto bg-charcoal-900/50 p-3 sm:p-4 border border-charcoal-600 border-dashed sm:transform sm:rotate-1">
                             Your chaotic, centralized hub for everything happening on campus.
                             Don't miss the good stuff.
                         </p>
@@ -108,7 +108,7 @@ export default function HomePage() {
 
                         {/* Stats Tape */}
                         <div className="pt-12 flex justify-center">
-                            <div className="bg-paper px-8 py-4 border-2 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-1 flex items-center gap-12 relative">
+                            <div className="bg-paper px-6 sm:px-8 py-4 border-2 border-charcoal-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:transform sm:rotate-1 flex flex-col sm:flex-row items-center gap-4 sm:gap-12 relative">
                                 {/* Pins */}
                                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-charcoal-900"></div>
 
@@ -118,7 +118,7 @@ export default function HomePage() {
                                     </div>
                                     <div className="font-typewriter text-charcoal-900 text-xs font-bold bg-tape-yellow px-1">POSTINGS</div>
                                 </div>
-                                <div className="w-0.5 h-10 bg-charcoal-900 dashed-border"></div>
+                                <div className="hidden sm:block w-0.5 h-10 bg-charcoal-900 dashed-border"></div>
                                 <div className="text-center">
                                     <div className="font-heading text-3xl font-bold text-campus-600">
                                         {categories.length}
