@@ -1,0 +1,219 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Special+Elite&display=swap');
+
+@theme {
+  --color-campus-50: #fef9f0;
+  --color-campus-100: #fdf0dc;
+  --color-campus-200: #fbe0b8;
+  --color-campus-300: #f8c888;
+  --color-campus-400: #f4a74e;
+  --color-campus-500: #f08c28;
+  --color-campus-600: #e1711e;
+  --color-campus-700: #bb561a;
+  --color-campus-800: #95441d;
+  --color-campus-900: #7a391b;
+
+  --color-coral-50: #fff5f3;
+  --color-coral-100: #ffe8e3;
+  --color-coral-200: #ffd5cc;
+  --color-coral-300: #ffb5a6;
+  --color-coral-400: #ff8a72;
+  --color-coral-500: #f86545;
+  --color-coral-600: #e54a2b;
+  --color-coral-700: #c13b20;
+  --color-coral-800: #9f331e;
+  --color-coral-900: #842f1f;
+
+  --color-charcoal-50: #f6f6f7;
+  --color-charcoal-100: #e2e3e5;
+  --color-charcoal-200: #c5c6cb;
+  --color-charcoal-300: #a0a2a9;
+  --color-charcoal-400: #7c7e87;
+  --color-charcoal-500: #62636d;
+  --color-charcoal-600: #4e4f57;
+  --color-charcoal-700: #414148;
+  --color-charcoal-800: #38383d;
+  --color-charcoal-900: #1e1e22;
+  --color-charcoal-950: #121214;
+
+  /* Zine Colors */
+  --color-paper: #fdfbf7;
+  --color-paper-dark: #f0efe9;
+  --color-tape-yellow: #fef08a;
+  --color-tape-trans: rgba(254, 240, 138, 0.8);
+
+  --font-sans: 'Inter', 'system-ui', '-apple-system', 'sans-serif';
+  --font-heading: 'Permanent Marker', cursive;
+  --font-typewriter: 'Special Elite', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-typewriter);
+    background-color: #2a2a2a;
+    background-image: url('/noise.svg');
+    background-blend-mode: overlay;
+    color: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-campus-500);
+    color: white;
+  }
+
+  /* Zine Utilities */
+  .btn-sticker {
+    @apply inline-flex items-center justify-center px-6 py-3 font-heading font-bold uppercase tracking-wider text-charcoal-900 transition-all duration-300 transform border-2 border-charcoal-900;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    background-color: var(--color-campus-400);
+    border-radius: 2px;
+  }
+
+  .btn-sticker:hover {
+    @apply hover:-translate-y-1 hover:-rotate-1 hover:bg-campus-500;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .btn-sticker-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-heading font-bold uppercase tracking-wider text-charcoal-900 transition-all duration-300 transform border-2 border-charcoal-900 bg-paper;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .btn-sticker-secondary:hover {
+    @apply hover:-translate-y-1 hover:rotate-1 hover:bg-gray-100;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .input-handwritten {
+    @apply w-full bg-paper px-4 py-3 border-2 border-charcoal-900 text-charcoal-900 placeholder-charcoal-500 font-typewriter focus:outline-none focus:ring-0 focus:border-campus-600 transition-all;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  }
+
+  .input-handwritten:focus {
+    box-shadow: 4px 4px 0px 0px rgba(240, 140, 40, 1);
+    transform: rotate(-0.5deg);
+  }
+}
+
+/* FullCalendar custom styling - specific overrides for Zine interaction */
+.fc {
+  --fc-border-color: var(--color-charcoal-700);
+  --fc-button-bg-color: var(--color-campus-600);
+  --fc-button-border-color: var(--color-campus-600);
+  --fc-button-hover-bg-color: var(--color-campus-700);
+  --fc-button-hover-border-color: var(--color-campus-700);
+  --fc-button-active-bg-color: var(--color-campus-800);
+  --fc-button-active-border-color: var(--color-campus-800);
+  --fc-today-bg-color: rgba(240, 140, 40, 0.08);
+  --fc-event-bg-color: var(--color-campus-600);
+  --fc-event-border-color: var(--color-campus-700);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: var(--color-charcoal-800);
+  --fc-list-event-hover-bg-color: var(--color-charcoal-700);
+  font-family: var(--font-sans);
+}
+
+.fc .fc-col-header-cell-cushion,
+.fc .fc-daygrid-day-number {
+  color: var(--color-charcoal-200);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: rgba(240, 140, 40, 0.08);
+}
+
+.fc .fc-button {
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 6px 14px;
+  transition: all 0.2s ease;
+}
+
+.fc .fc-toolbar-title {
+  font-family: var(--font-heading);
+  color: var(--color-charcoal-100);
+  font-weight: 600;
+}
+
+.fc .fc-event {
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fc .fc-event:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(240, 140, 40, 0.3);
+}
+
+.fc th {
+  background-color: var(--color-charcoal-800);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.fc td {
+  border-color: var(--color-charcoal-700);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal-500);
+}
+
+/* Toast animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.toast-exit {
+  animation: slideOut 0.3s ease forwards;
+}
