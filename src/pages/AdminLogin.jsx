@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Shield, Mail, Lock, Loader2, AlertCircle, Sparkles } from 'lucide-react'
@@ -11,11 +11,12 @@ export default function AdminLogin() {
     const { signIn, isAdmin, user } = useAuth()
     const navigate = useNavigate()
 
-    // If already logged in as admin, redirect
-    if (user && isAdmin) {
-        navigate('/admin/dashboard', { replace: true })
-        return null
-    }
+    // Redirect if already logged in as admin (side-effect, not during render)
+    useEffect(() => {
+        if (user && isAdmin) {
+            navigate('/admin/dashboard', { replace: true })
+        }
+    }, [user, isAdmin, navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

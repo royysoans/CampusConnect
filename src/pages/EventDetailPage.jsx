@@ -102,7 +102,7 @@ export default function EventDetailPage() {
                                     </div>
                                 )}
 
-                                {/* Status Stamp removed from banner */}\n
+                                {/* Status Stamp removed from banner */}
                             </div>
 
                             <div className="px-6 pb-8 relative z-10">

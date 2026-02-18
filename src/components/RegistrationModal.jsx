@@ -17,7 +17,7 @@ export default function RegistrationModal({ event, isOpen, onClose }) {
 
         try {
             // Check for duplicate registration
-            const { data: existing } = await supabase
+            const { data: existing, error: checkError } = await supabase
                 .from('registrations')
                 .select('id')
                 .eq('event_id', event.id)
@@ -29,8 +29,15 @@ export default function RegistrationModal({ event, isOpen, onClose }) {
                 setLoading(false)
                 return
             }
-        } catch {
-            // No duplicate found, proceed
+
+            // PGRST116 = no rows found, which means no duplicate — safe to proceed
+            if (checkError && checkError.code !== 'PGRST116') {
+                throw checkError
+            }
+        } catch (err) {
+            setError(err.message || 'Something went wrong checking registration. Please try again.')
+            setLoading(false)
+            return
         }
 
         try {

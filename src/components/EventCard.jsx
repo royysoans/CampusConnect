@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { format, parseISO } from 'date-fns'
 import { Calendar, MapPin, Tag, Users, Clock, ArrowRight } from 'lucide-react'
@@ -37,11 +38,22 @@ export default function EventCard({ event }) {
     const statusInfo = statusConfig[status]
     const colorClass = categoryColors[event.category] || defaultCategoryColor
 
+    // Stable deterministic rotation based on event id (avoids layout thrash from Math.random)
+    const rotation = useMemo(() => {
+        let hash = 0
+        const str = String(event.id)
+        for (let i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i)
+            hash |= 0
+        }
+        return ((hash % 200) / 100) - 1 // range -1 to 1
+    }, [event.id])
+
     return (
         <Link
             to={`/event/${event.id}`}
             className="group block relative bg-paper border-2 border-charcoal-900 shadow-[6px_6px_0px_0px_rgba(30,30,34,1)] hover:shadow-[10px_10px_0px_0px_rgba(240,140,40,1)] hover:-translate-y-1 transition-all duration-300 transform hover:rotate-1"
-            style={{ transform: `rotate(${Math.random() * 2 - 1}deg)` }}
+            style={{ transform: `rotate(${rotation}deg)` }}
         >
             {/* Tape effect at top center */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-tape-yellow/90 border border-charcoal-900/10 transform -rotate-1 shadow-sm z-10"></div>
@@ -60,7 +72,7 @@ export default function EventCard({ event }) {
                     </div>
                 )}
 
-                {/* Status and Category badges removed from banner */}\n
+                {/* Status and Category badges removed from banner */}
             </div>
 
             {/* Content */}

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import { supabase } from '../lib/supabaseClient'
-import { isAfter, isBefore, isToday, parseISO, startOfDay, endOfDay } from 'date-fns'
+import { isAfter, isBefore, isToday, parseISO, startOfDay } from 'date-fns'
 
 const EventsContext = createContext({})
 
@@ -92,7 +92,7 @@ export function EventsProvider({ children }) {
     }, [events])
 
     const getEventById = useCallback((id) => {
-        return events.find(e => e.id === id) || null
+        return events.find(e => String(e.id) === String(id)) || null
     }, [events])
 
     const categories = [...new Set(events.map(e => e.category).filter(Boolean))]

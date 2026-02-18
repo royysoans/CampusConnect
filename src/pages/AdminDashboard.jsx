@@ -301,10 +301,11 @@ function StatCard({ icon, label, value, type, rotate }) {
         pink: 'bg-pink-300',
     }
 
+    const rotateClass = rotate === '-2' ? 'sm:-rotate-2' : rotate === '1' ? 'sm:rotate-1' : 'sm:-rotate-1'
+
     return (
         <div
-            className={`${bgColors[type]} p-4 sm:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300 relative`}
-            style={{ transform: window.innerWidth >= 640 ? `rotate(${rotate}deg)` : 'none' }}
+            className={`${bgColors[type]} ${rotateClass} p-4 sm:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform duration-300 relative`}
         >
             {/* Pin */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-500 border-2 border-charcoal-900 shadow-sm z-10"></div>

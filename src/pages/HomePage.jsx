@@ -217,6 +217,3 @@ export default function HomePage() {
         </div>
     )
 }
-
-// Helper component removed as we inlined the sections for specific styling diversity
-function EventSection() { return null }
