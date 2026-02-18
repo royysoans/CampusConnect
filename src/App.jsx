@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { EventsProvider } from './context/EventsContext'
+import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -13,31 +14,33 @@ import ProtectedRoute from './components/ProtectedRoute'
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        <EventsProvider>
-          <div className="min-h-screen flex flex-col bg-charcoal-950">
-            <Navbar />
-            <main className="flex-1">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/calendar" element={<CalendarPage />} />
-                <Route path="/event/:id" element={<EventDetailPage />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route
-                  path="/admin/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </EventsProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <EventsProvider>
+            <div className="min-h-screen flex flex-col bg-charcoal-950 theme-bg transition-colors duration-300">
+              <Navbar />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/calendar" element={<CalendarPage />} />
+                  <Route path="/event/:id" element={<EventDetailPage />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route
+                    path="/admin/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <AdminDashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </EventsProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   )
 }

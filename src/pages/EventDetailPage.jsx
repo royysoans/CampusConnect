@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useEvents } from '../context/EventsContext'
 import RegistrationModal from '../components/RegistrationModal'
+import CountdownTimer from '../components/CountdownTimer'
 import { format, parseISO, isAfter, isToday, startOfDay } from 'date-fns'
 import {
     Calendar, Clock, MapPin, Tag, Users, ArrowLeft,
-    UserPlus, Share2, Loader2, Phone
+    UserPlus, Share2, Loader2, Phone, CalendarPlus
 } from 'lucide-react'
 
 export default function EventDetailPage() {
@@ -62,6 +63,44 @@ export default function EventDetailPage() {
         } catch {
             navigator.clipboard.writeText(window.location.href)
         }
+    }
+
+    const downloadICS = (evt) => {
+        const dateStr = evt.date.replace(/-/g, '')
+        const timeStr = (evt.time || '00:00:00').replace(/:/g, '').slice(0, 6)
+        const dtStart = `${dateStr}T${timeStr}`
+        // End time = start + 2 hours
+        const startDate = new Date(`${evt.date}T${evt.time || '00:00:00'}`)
+        const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000)
+        const dtEnd = `${endDate.getFullYear()}${String(endDate.getMonth() + 1).padStart(2, '0')}${String(endDate.getDate()).padStart(2, '0')}T${String(endDate.getHours()).padStart(2, '0')}${String(endDate.getMinutes()).padStart(2, '0')}${String(endDate.getSeconds()).padStart(2, '0')}`
+
+        const ics = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//CampusConnect//Event//EN',
+            'BEGIN:VEVENT',
+            `DTSTART:${dtStart}`,
+            `DTEND:${dtEnd}`,
+            `SUMMARY:${evt.title}`,
+            `DESCRIPTION:${(evt.description || '').replace(/\n/g, '\\n')}`,
+            `LOCATION:${evt.venue || ''}`,
+            `ORGANIZER:${evt.organizer || ''}`,
+            'BEGIN:VALARM',
+            'TRIGGER:-PT1H',
+            'ACTION:DISPLAY',
+            'DESCRIPTION:Event starts in 1 hour!',
+            'END:VALARM',
+            'END:VEVENT',
+            'END:VCALENDAR',
+        ].join('\r\n')
+
+        const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${evt.title.replace(/\s+/g, '_')}.ics`
+        a.click()
+        URL.revokeObjectURL(url)
     }
 
     return (
@@ -180,6 +219,11 @@ export default function EventDetailPage() {
                             </div>
                         </div>
 
+                        {/* Countdown */}
+                        {isUpcoming && (
+                            <CountdownTimer date={event.date} time={event.time} />
+                        )}
+
                         {/* Actions */}
                         <div className="space-y-4 pt-4">
                             {isUpcoming && (
@@ -198,6 +242,14 @@ export default function EventDetailPage() {
                             >
                                 <Share2 className="w-5 h-5" />
                                 Share Flyer
+                            </button>
+
+                            <button
+                                onClick={() => downloadICS(event)}
+                                className="w-full btn-sticker-secondary flex items-center justify-center gap-2 font-bold"
+                            >
+                                <CalendarPlus className="w-5 h-5" />
+                                Add to Calendar
                             </button>
                         </div>
                     </div>

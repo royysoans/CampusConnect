@@ -218,3 +218,74 @@
 .toast-exit {
   animation: slideOut 0.3s ease forwards;
 }
+
+/* ===== LIGHT MODE OVERRIDES ===== */
+[data-theme="light"] body {
+  background-color: #f5f0e8;
+  background-image: url('/noise.svg');
+  background-blend-mode: overlay;
+  color: var(--color-charcoal-900);
+}
+
+/* Theme-aware background utility */
+[data-theme="light"] .theme-bg {
+  background-color: #f5f0e8 !important;
+}
+
+/* Hero & section headings on previously-dark backgrounds */
+[data-theme="light"] .text-charcoal-100,
+[data-theme="light"] .text-charcoal-200 {
+  color: var(--color-charcoal-800);
+}
+
+[data-theme="light"] .text-white {
+  color: var(--color-charcoal-900);
+}
+
+/* Footer */
+[data-theme="light"] footer {
+  background-color: var(--color-charcoal-100) !important;
+  border-color: var(--color-charcoal-300) !important;
+}
+
+[data-theme="light"] footer .text-charcoal-400,
+[data-theme="light"] footer .text-charcoal-500 {
+  color: var(--color-charcoal-600);
+}
+
+/* FullCalendar in light mode */
+[data-theme="light"] .fc {
+  --fc-border-color: var(--color-charcoal-300);
+  --fc-neutral-bg-color: var(--color-charcoal-100);
+  --fc-list-event-hover-bg-color: var(--color-charcoal-200);
+}
+
+[data-theme="light"] .fc .fc-col-header-cell-cushion,
+[data-theme="light"] .fc .fc-daygrid-day-number {
+  color: var(--color-charcoal-800);
+}
+
+[data-theme="light"] .fc .fc-toolbar-title {
+  color: var(--color-charcoal-900);
+}
+
+[data-theme="light"] .fc th {
+  background-color: var(--color-charcoal-200);
+}
+
+[data-theme="light"] .fc td {
+  border-color: var(--color-charcoal-300);
+}
+
+/* Scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: var(--color-charcoal-200);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal-400);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal-500);
+}

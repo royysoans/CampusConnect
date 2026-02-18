@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { X, User, Mail, Hash, Loader2, CheckCircle2 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import confetti from 'canvas-confetti'
 
 export default function RegistrationModal({ event, isOpen, onClose }) {
     const [formData, setFormData] = useState({ name: '', email: '', roll_no: '' })
@@ -53,6 +54,14 @@ export default function RegistrationModal({ event, isOpen, onClose }) {
             if (insertError) throw insertError
 
             setSuccess(true)
+
+            // Fire celebratory confetti 🎉
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#f08c28', '#fef08a', '#f86545', '#f4a74e', '#ff8a72'],
+            })
             setTimeout(() => {
                 onClose()
                 setSuccess(false)

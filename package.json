@@ -15,6 +15,7 @@
     "@fullcalendar/react": "^6.1.20",
     "@fullcalendar/timegrid": "^6.1.20",
     "@supabase/supabase-js": "^2.96.0",
+    "canvas-confetti": "^1.9.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.34.1",
     "lucide-react": "^0.574.0",

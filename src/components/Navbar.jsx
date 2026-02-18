@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { Menu, X, Calendar, Home, Shield, LogOut, Sparkles } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
+import { Menu, X, Calendar, Home, Shield, LogOut, Sparkles, Sun, Moon } from 'lucide-react'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const { user, isAdmin, signOut } = useAuth()
+    const { theme, toggleTheme } = useTheme()
     const location = useLocation()
 
     const isActive = (path) => location.pathname === path
@@ -80,15 +82,32 @@ export default function Navbar() {
                                 Admin
                             </Link>
                         )}
+
+                        {/* Theme toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 text-charcoal-600 hover:text-charcoal-900 hover:bg-charcoal-200 transition-all transform hover:rotate-12 border-2 border-transparent hover:border-charcoal-900"
+                            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                        >
+                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        </button>
                     </div>
 
-                    {/* Mobile hamburger */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden p-2 text-charcoal-900 hover:bg-charcoal-200 rounded-lg transition-colors border-2 border-transparent hover:border-charcoal-900"
-                    >
-                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                    </button>
+                    {/* Mobile: theme toggle + hamburger */}
+                    <div className="md:hidden flex items-center gap-2">
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 text-charcoal-900 hover:bg-charcoal-200 rounded-lg transition-colors"
+                        >
+                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        </button>
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="p-2 text-charcoal-900 hover:bg-charcoal-200 rounded-lg transition-colors border-2 border-transparent hover:border-charcoal-900"
+                        >
+                            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile menu */}
