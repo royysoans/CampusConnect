@@ -2,14 +2,6 @@
 
 **CampusConnect** is a vibrant, retro-inspired campus event management portal. It serves as a centralized hub for students to discover, register for, and track college events, while providing admins with a powerful dashboard to manage the campus board.
 
-
-## Design Philosophy: "The Zine Aesthetic"
-CampusConnect breaks away from standard, boring web designs with a **Zine / Bulletin-Board** aesthetic:
-- **Rotated Elements**: Cards and headers mimic paper flyers pinned to a board.
-- **Vibrant Textures**: Subtle noise overlays and paper backgrounds.
-- **Hand-drawn Accents**: Using specialized fonts like *Permanent Marker* and *Special Elite*.
-- **Tactile UI**: Heavy shadows and high-contrast borders for a "cut-and-paste" feel.
-
 ---
 
 ## Features
